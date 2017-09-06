@@ -13,4 +13,6 @@ build
 .DS_Store
 npm-debug.log
 
-config.js
+.env
+src/.env
+src/config.js
