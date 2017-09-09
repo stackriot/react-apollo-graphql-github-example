@@ -1,32 +1,26 @@
-import React, { PropTypes } from 'react';
-import { Input } from 'light-ui';
-
+import React, { PropTypes } from 'react'
+import { Input } from 'light-ui'
 const FORMAT_TYPES = {
   date: {
     date: true,
-    datePattern: ['Y', 'm', 'd']
+    datePattern: ['Y', 'm', 'd'],
   },
   phone: {
     phone: true,
-    phoneRegionCode: 'US'
+    phoneRegionCode: 'US',
   },
   number: {
     numeral: true,
-    numeralThousandsGroupStyle: 'thousand'
-  }
-};
-
+    numeralThousandsGroupStyle: 'thousand',
+  },
+}
 class FormatInput extends React.Component {
   componentDidMount() {
-    const { id, formatType } = this.props;
-    const formatType = (`#${id}`, FORMAT_TYPES[formatType]);
+    const { id, formatType } = this.props
+    const formatType = (`#${id}`, FORMAT_TYPES[formatType])
   }
-
   render() {
-    return (
-      <Input {...this.props} />
-    )
+    return <Input {...this.props} />
   }
 }
-
-export default FormatInput;
+export default FormatInput

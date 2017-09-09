@@ -1,31 +1,31 @@
 const fromEvent = require('graphcool-lib').fromEvent
 
-const client_id = 'Iv1.21cf2727d5657718'
-const client_secret = 'c444ba5f8e4f496318eb33553d0f94faed848c91'
+const client_id = '__CLIENT_ID__'
+const client_secret = '__CLIENT_SECRET__'
 
-module.exports = function(event) {
+module.exports = function (event) {
   const code = event.data.githubCode
   const graphcool = fromEvent(event)
   const api = graphcool.api('simple/v1')
 
-  function getGithubToken() {
+  function getGithubToken () {
     return fetch('https://github.com/login/oauth/access_token', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify({
         client_id,
         client_secret,
-        code,
-      }),
+        code
+      })
     })
       .then(data => data.json())
       .then(json => json.access_token)
   }
 
-  function getGithubAccountData(githubToken) {
+  function getGithubAccountData (githubToken) {
     if (!githubToken) {
       return Promise.reject('Github access_token is undefined.')
     }
@@ -42,7 +42,7 @@ module.exports = function(event) {
       })
   }
 
-  function getGraphcoolUser(githubUser) {
+  function getGraphcoolUser (githubUser) {
     return api
       .request(
         `
@@ -61,7 +61,7 @@ module.exports = function(event) {
       })
   }
 
-  function createGraphcoolUser(githubUser) {
+  function createGraphcoolUser (githubUser) {
     return api
       .request(
         `
@@ -78,7 +78,7 @@ module.exports = function(event) {
       })
   }
 
-  function generateGraphcoolToken(graphcoolUserId) {
+  function generateGraphcoolToken (graphcoolUserId) {
     return graphcool.generateAuthToken(graphcoolUserId, 'User')
   }
 
@@ -97,7 +97,7 @@ module.exports = function(event) {
       .then(token => {
         return { data: { token: token } }
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error)
 
         // don't expose error message to client!

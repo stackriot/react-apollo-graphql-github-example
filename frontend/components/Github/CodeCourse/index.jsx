@@ -124,7 +124,7 @@ class CodeCourse extends React.Component {
                     clickable={false}
                     style={{ lineHeight: 'normal' }}
                   />
-                ) : ''}
+                )}
               </span><br/>
               <div className={githubStyles["tipso_line"]}></div>
               <ReposBaseInfo

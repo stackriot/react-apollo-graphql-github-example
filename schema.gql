@@ -1,7 +1,4 @@
-# project: cj7814gvy08ed01373ndblhid
-# version: 2
-
-type User implements Node {
+﻿type User implements Node {
   id: ID! @isUnique
   githubUserId: String @isUnique
   createdAt: DateTime!
@@ -10,6 +7,8 @@ type User implements Node {
   password: String
   isVerified: Boolean! @defaultValue(value: false)
   secret: String @isUnique
+  files: [File!]! @relation(name: "UserOnFile")
+  githubRepo: GithubRepo! @relation(name: "UserOnGithubRepo")
 }
 
 type File implements Node {
@@ -21,6 +20,7 @@ type File implements Node {
   size: Int!
   updatedAt: DateTime!
   url: String! @isUnique
+  user: User @relation(name: "UserOnFile")
 }
 
 type GithubRepo implements Node {
@@ -28,7 +28,7 @@ type GithubRepo implements Node {
   id: ID! @isUnique
   name: String @isUnique
   updatedAt: DateTime!
-  avatar: String
+  avatar: Float
   changelog: String
   description: String
   homepageUrl: String
@@ -44,4 +44,5 @@ type GithubRepo implements Node {
   stars: Int
   isVerified: Boolean! @defaultValue(value: false)
   secret: String @isUnique
+  user: User @relation(name: "UserOnGithubRepo")
 }

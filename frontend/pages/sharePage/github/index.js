@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-if (process.env.NODE_ENV !== "production") {
-  const { whyDidYouUpdate } = require("why-did-you-update");
-  whyDidYouUpdate(React);
-}
+// if (process.env.NODE_ENV !== "production") {
+//   const { whyDidYouUpdate } = require("why-did-you-update");
+//   whyDidYouUpdate(React);
+// }
 
 import GithubComponent from "/components/GithubComponent";
 

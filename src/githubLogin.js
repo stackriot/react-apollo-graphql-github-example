@@ -17,7 +17,7 @@ export function login(name, pwd) {
       Authorization: "Basic " + encoded,
       "User-Agent": "GitHub Issue Browser",
       "Content-Type": "application/json; charset=utf-8",
-      Accept: "application/vnd.github.inertia-preview+json"
+      Accept: "application/vnd.github.machine-man-preview+json"
     },
     body: JSON.stringify({
       client_id: config.GITHUB_CLIENT_ID,

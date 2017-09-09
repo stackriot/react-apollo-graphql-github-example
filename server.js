@@ -14,7 +14,7 @@ app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.listen(process.env.PORT || 3000, (request, response, error) => {
+app.listen(3000, (request, response, error) => {
   if (error) {
     console.error(error);
   } else {

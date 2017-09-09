@@ -7,7 +7,7 @@ import ApolloClient, { createNetworkInterface } from "apollo-client";
 
 // Auth
 import { login } from "./githubLogin";
-import { username, password } from "./config";
+import { username, password } from "./config.json";
 
 // App.Components
 import Repository from "./repository";
@@ -24,7 +24,7 @@ networkInterface.use([
   {
     applyMiddleware(req, next) {
       if (!req.options.headers) {
-        req.options.headers = {}; // Create the header object if needed.
+        req.options.headers = {`application/vnd.github.machine-man-preview+json`}; // Create the header object if needed.
       }
 
       // Send the login token in the Authorization header
